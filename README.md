@@ -1,7 +1,7 @@
 # 🔐 금고 비밀번호를 찾아라  
 ### Linux Device Driver 기반 금고 해제 & 실시간 시계 시스템
 
-> Intel Edge SW Academy Project
+> Intel Edge SW Academy Project  
 > Raspberry Pi 4 기반 리눅스 커널 디바이스 드라이버 설계 및 응용
 
 ---
@@ -30,6 +30,25 @@ OLED 디스플레이 기반 UI와 로터리 엔코더 입력을 활용해 직관
 
 ---
 
+## 하드웨어
+
+<table>
+  <tr>
+    <th align="center">Hardware</th>
+    <th align="center">KiCad</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="docs/hardware.jpg" width="600">
+    </td>
+    <td align="center">
+      <img src="docs/kicad.png" width="600">
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 시스템 구조
 
 User ↔ Application(Logic/UI) ↔ Device Driver(Kernel) ↔ Hardware(OLED/Rotary/RTC/Buzzer)
@@ -37,13 +56,9 @@ User ↔ Application(Logic/UI) ↔ Device Driver(Kernel) ↔ Hardware(OLED/Rotar
 ## Flow CHart
 ![system_overview](docs/flowchart.png)
 
----## 👤 팀 구성
-
-- **김기환** : 애플리케이션 로직, UI 구성 및 테스트  
-- **이동현** : 디바이스 드라이버 설계, 입력 안정성 개선, 시스템 구조 설계  
+---
 
 ## 동작 화면
-
 
 ### ▶ 금고 해제 게임 (START_GAME)
 ![game_mode](docs/gif/game_mode.gif)
@@ -66,25 +81,22 @@ User ↔ Application(Logic/UI) ↔ Device Driver(Kernel) ↔ Hardware(OLED/Rotar
 
 ## 🧪 오실로스코프 분석 (입력 안정성 검증)
 
-### ▶ 로터리 엔코더 파형 분석
-- 회전 방향(CW / CCW) 및 버튼 입력 파형 확인
-- 인터럽트 방식에서 발생하는 **노이즈 및 타이밍 불안정 현상 확인**
-
-![rotary_scope](docs/oscilloscope/rotary_encoder_scope.png)
+### ▶ 로터리 엔코더 파형 분석  
+- 회전 방향(CW / CCW) 및 버튼 입력 파형 확인  
+![rotary_scope](docs/rotary_encoder_osilo.png)
 
 ---
 
 ### ▶ PWM 부저 파형 분석
-- 주기 변화에 따른 출력 파형 확인
-- 거리 기반 힌트음 동작 검증
-
-![buzzer_scope](docs/oscilloscope/buzzer_pwm_scope.png)
+- 주기 변화에 따른 출력 파형 확인  
+![buzzer_scope](docs/oscilloscope/PWM_osilo.png)
 
 ---
 
-## 주요 문제 해결
+## Trouble SHooting
 
 - **로터리 입력 튐 현상**
+
   - 인터럽트 방식 → 노이즈에 취약
   - **hrtimer 기반 1ms 폴링 방식으로 전환**
   - 입력 안정성 및 예측 가능한 CPU 부하 확보
