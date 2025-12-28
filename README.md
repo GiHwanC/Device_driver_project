@@ -106,7 +106,7 @@ OLED 디스플레이 기반 UI와 로터리 엔코더 입력을 활용해 직관
   </tr>
   <tr>
     <td align="center">
-      <img src="docs/rotary_encoder_interupt.gif" width="600">
+      <img src="docs/rotary_encoder_interrupt.gif" width="600">
     </td>
     <td align="center">
       <img src="docs/rotary_error_osilo.jpg" width="600">
