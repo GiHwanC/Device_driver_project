@@ -95,7 +95,7 @@ OLED 디스플레이 기반 UI와 로터리 엔코더 입력을 활용해 직관
 
 ---
 
-## Trouble SHooting
+## Trouble Shooting
 
 - **로터리 입력 튐 현상**
 
